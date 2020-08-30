@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class Resource : MonoBehaviour, IResource
+public abstract class Resource : MonoBehaviour, IResource
 { 
+    public abstract ResourceType type {get;}
     [SerializeField] private int _totalAvailable = 20;
     private int _available;
     private Vector3 _initLocalScale;

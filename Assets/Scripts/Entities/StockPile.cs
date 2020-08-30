@@ -1,25 +1,26 @@
 using UnityEngine;
 
-public class StockPile : MonoBehaviour
+public class Stockpile : MonoBehaviour
 {
     [SerializeField] private int _storageLimit = 200;
+    public ResourceType type = default;
 
-    private int _storage = 0;
+    private ResourceCollection _storage = new ResourceCollection();
+    private int _totalStorageAmount => _storage.TotalResourceAmount();
+    private IStockpile _stockpileController;
 
-    public bool Store(int storeAmount, out int stored)
+    private void Start()
     {
-        stored = 0;
-        if (IsFull())
-            return false;
+        _stockpileController = new StockPileController(type, _storageLimit);
+    }
 
-        stored = (_storage + storeAmount <= _storageLimit) ? storeAmount : _storageLimit - _storage;
-        _storage += stored;
-
-        return true;
+    public bool Store(ResourceCollection storeAmount, out ResourceCollection stored)
+    {
+        return _stockpileController.Store(storeAmount, out stored);
     }
 
     public bool IsFull()
     {
-        return  _storageLimit <= _storage;
+        return _stockpileController.IsFull();
     }
 }

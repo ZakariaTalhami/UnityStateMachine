@@ -15,11 +15,11 @@ public class SearchForStockpile : IState
         _gatherer.stockPile = GetClosestStockPile();
     }
 
-    private StockPile GetClosestStockPile()
+    private Stockpile GetClosestStockPile()
     {
-        return Object.FindObjectsOfType<StockPile>()
+        return Object.FindObjectsOfType<Stockpile>()
             .OrderBy(s => Vector3.Distance(_gatherer.transform.position, s.transform.position))
-            .Where(s => s.IsFull() == false)
+            .Where(s => s.IsFull() == false && s.type == _gatherer.resourceTargetType)
             .FirstOrDefault();
     }
 

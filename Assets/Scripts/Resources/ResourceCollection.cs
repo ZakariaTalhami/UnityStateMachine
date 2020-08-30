@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public class ResourceCollection
 {
-
+    public readonly static ResourceCollection EMPTY_RESOURCE_COLLECTION = new ResourceCollection();
+    
     private Dictionary<ResourceType, int> _collection;
 
     public ResourceCollection()
@@ -49,10 +50,14 @@ public class ResourceCollection
         return taken;
     }
 
-    public int TotalResourceAmount()
+    public ResourceCollection GetSingleResourceCollection(ResourceType type)
     {
-        return _collection.Sum(resource => resource.Value);
+        ResourceCollection resource = new ResourceCollection();
+        resource.AddToResource(type, _collection[type]);
+        return resource;
     }
+
+    public int TotalResourceAmount() => _collection.Sum(resource => resource.Value);
 
     public static ResourceCollection operator +(ResourceCollection rc1, ResourceCollection rc2)
     {
@@ -76,4 +81,53 @@ public class ResourceCollection
         return new ResourceCollection(newCollection);
     }
 
+    public static bool operator <(ResourceCollection rc1, ResourceCollection rc2)
+    {
+        bool isLessThan = true;
+        foreach (ResourceType type in Enum.GetValues(typeof(ResourceType)))
+        {
+            if((rc1.GetResourceAmount(type) < rc2.GetResourceAmount(type)) == false)
+            {
+                isLessThan = false;
+                break;
+            }
+        }
+
+        return isLessThan; 
+    }
+    
+    public static bool operator >(ResourceCollection rc1, ResourceCollection rc2)
+    {
+        return rc2 < rc1;
+    }
+
+    public static bool operator <=(ResourceCollection rc1, ResourceCollection rc2)
+    {
+        bool isLessThanOrEqual = true;
+        foreach (ResourceType type in Enum.GetValues(typeof(ResourceType)))
+        {
+            if((rc1.GetResourceAmount(type) <= rc2.GetResourceAmount(type)) == false)
+            {
+                isLessThanOrEqual = false;
+                break;
+            }
+        }
+
+        return isLessThanOrEqual; 
+    }
+
+    public static bool operator >=(ResourceCollection rc1, ResourceCollection rc2)
+    {
+        bool isGreaterThanOrEqual = true;
+        foreach (ResourceType type in Enum.GetValues(typeof(ResourceType)))
+        {
+            if((rc1.GetResourceAmount(type) >= rc2.GetResourceAmount(type)) == false)
+            {
+                isGreaterThanOrEqual = false;
+                break;
+            }
+        }
+
+        return isGreaterThanOrEqual;
+    }
 }

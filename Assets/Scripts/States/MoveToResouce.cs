@@ -22,6 +22,7 @@ public class MoveToResouce : IState
             stuckTime += Time.deltaTime;
 
         _lastPosition = _gatherer.transform.position;
+        Debug.DrawLine(_gatherer.transform.position, _gatherer.target.transform.position);
     }
 
     public void OnEnter()

@@ -22,6 +22,7 @@ public class MoveToStockPile : IState
             stuckTime += Time.deltaTime;
 
         _lastPosition = _gatherer.transform.position;
+        Debug.DrawLine(_gatherer.transform.position, _navMeshAgent.destination);
     }
 
     public void OnEnter()

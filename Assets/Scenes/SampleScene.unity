@@ -1573,6 +1573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _storageLimit: 200
+  type: 0
 --- !u!4 &551665300
 Transform:
   m_ObjectHideFlags: 0
@@ -2681,6 +2682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _storageLimit: 200
+  type: 0
 --- !u!4 &1008761097 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3514429451318899066, guid: c71a21e03ef39ab4092a87545a18846c,
@@ -3055,11 +3057,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c21586327d38b4b947bf6f967cdc9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridCellSize: -1
   walkableGridMeta:
     origin: {x: 50, y: 0, z: 50}
     width: 100
     height: 100
-  gridCellSize: -1
   villageGridMeta:
     origin: {x: 0, y: 0, z: 50}
     width: 50
@@ -4970,6 +4972,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Villager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014858309545544725, guid: fea358bc9308c6e4aad9bb6b2393df11,
+        type: 3}
+      propertyPath: resourceTargetType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5014858309545544727, guid: fea358bc9308c6e4aad9bb6b2393df11,
         type: 3}

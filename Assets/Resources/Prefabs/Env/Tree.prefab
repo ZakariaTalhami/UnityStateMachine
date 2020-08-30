@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4af10774feef864e8a47d0522ab9bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScaleModifier: 0.2
-  allowShrinking: 1
-  GFX: {fileID: 6780084787577389111}
+  _maxScaleModifier: 0.2
+  _allowShrinking: 1
+  _GFX: {fileID: 6780084787577389111}
 --- !u!114 &114765645694245764
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,15 +4,15 @@ public class RandomScale : MonoBehaviour
 {
 
     [Range(0, 1)]
-    [SerializeField] private  float maxScaleModifier;
-    [SerializeField] private bool allowShrinking = false;
-    [SerializeField] private Transform GFX;
+    [SerializeField] private float _maxScaleModifier = default;
+    [SerializeField] private bool _allowShrinking = false;
+    [SerializeField] private Transform _GFX = null;
 
     void Start()
     {
-        float minScaleModifier = allowShrinking == true ? -maxScaleModifier : 0;
-        float randomScaleAddedScale = Random.Range(minScaleModifier, maxScaleModifier);
+        float minScaleModifier = _allowShrinking == true ? -_maxScaleModifier : 0;
+        float randomScaleAddedScale = Random.Range(minScaleModifier, _maxScaleModifier);
         Vector3 scaleModifier = new Vector3(randomScaleAddedScale, randomScaleAddedScale, randomScaleAddedScale);
-        GFX.localScale += GFX.localScale * randomScaleAddedScale;
+        _GFX.localScale += _GFX.localScale * randomScaleAddedScale;
     }
 }

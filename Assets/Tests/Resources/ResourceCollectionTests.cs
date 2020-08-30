@@ -94,5 +94,44 @@ namespace Tests
             Assert.AreEqual(woodAmount, 15);
             Assert.AreEqual(stoneAmount, -20);
         }
+
+        [Test]
+        public void ResourceCollectionLessOrGreaterThanTrue() 
+        {
+            ResourceCollection rc1 = new ResourceCollection();
+            ResourceCollection rc2 = new ResourceCollection();
+
+            rc1.AddToResource(ResourceType.Wood, 5);
+            rc1.AddToResource(ResourceType.Stone, 20);
+            rc1.AddToResource(ResourceType.Gold, 35);
+            rc2.AddToResource(ResourceType.Wood, 20);
+            rc2.AddToResource(ResourceType.Stone, 50);
+            rc2.AddToResource(ResourceType.Gold, 40);
+
+            bool isLessThan = rc1 < rc2;
+            bool isGreaterThan = rc2 > rc1;
+
+            Assert.IsTrue(isLessThan);
+            Assert.IsTrue(isLessThan);
+        }
+
+        [Test]
+        public void ResourceCollectionLessOrGreaterThanFalse() 
+        {
+                        ResourceCollection rc1 = new ResourceCollection();
+            ResourceCollection rc2 = new ResourceCollection();
+
+            rc1.AddToResource(ResourceType.Wood, 5);
+            rc1.AddToResource(ResourceType.Stone, 20);
+            rc1.AddToResource(ResourceType.Gold, 35);
+            rc2.AddToResource(ResourceType.Wood, 50);
+            rc2.AddToResource(ResourceType.Gold, 40);
+
+            bool isLessThan = rc1 < rc2;
+            bool isgreaterThan= rc2 > rc1;
+
+            Assert.IsFalse(isLessThan);
+            Assert.IsFalse(isgreaterThan);
+        }
     }
 }
