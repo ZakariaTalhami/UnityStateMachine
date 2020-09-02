@@ -12,11 +12,17 @@ public class Stockpile : MonoBehaviour
     private void Start()
     {
         _stockpileController = new StockPileController(type, _storageLimit);
+        ResourceEventHandler.StockpileConstructed(this);
     }
 
     public bool Store(ResourceCollection storeAmount, out ResourceCollection stored)
     {
         return _stockpileController.Store(storeAmount, out stored);
+    }
+
+    public bool Take(ResourceCollection takeAmount, out ResourceCollection taken)
+    {
+        return _stockpileController.Take(takeAmount, out taken);
     }
 
     public bool IsFull()

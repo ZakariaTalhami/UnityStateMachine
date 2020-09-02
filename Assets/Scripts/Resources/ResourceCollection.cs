@@ -57,6 +57,17 @@ public class ResourceCollection
         return resource;
     }
 
+    public override string ToString()
+    {
+        System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+        stringBuilder.AppendLine("Resource Collection: "); 
+        foreach (ResourceType type in Enum.GetValues(typeof(ResourceType)))
+        {
+            stringBuilder.AppendLine(type + " : " + _collection[type]);    
+        }
+
+        return stringBuilder.ToString();
+    }
     public int TotalResourceAmount() => _collection.Sum(resource => resource.Value);
 
     public static ResourceCollection operator +(ResourceCollection rc1, ResourceCollection rc2)

@@ -30,6 +30,8 @@ public class StockPileController : IStockpile
         }
         _storage += stored;
 
+        ResourceEventHandler.ResourceStoredInStockpile(stored);
+
         return true;
     }
 
@@ -50,6 +52,8 @@ public class StockPileController : IStockpile
             taken = takeAmountForType;
         }
         _storage += taken;
+
+        ResourceEventHandler.ResourceTakenFormStockpile(taken);
 
         return true;
     } 
