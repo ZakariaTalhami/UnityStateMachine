@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 
-public class Gatherer : MonoBehaviour 
+public class Gatherer : Villager
 {
     public float gatherSpeed;
     public float storeSpeed;
@@ -11,20 +11,21 @@ public class Gatherer : MonoBehaviour
     [SerializeField] private int _maxResourceCarryLimit = default; 
     public ResourceType resourceTargetType;
 
-    private StateMachine _stateMachine;
-    private NavMeshAgent _navMeshAgent;
     private ResourceCollection _resourceCollection;
     private int _totalCarryAmount => _resourceCollection.TotalResourceAmount();
     public Resource target { get; set; } 
-    public Stockpile stockPile { get; set; } 
+    public Stockpile stockPile { get; set; }
 
-    private void Start()
+    public override VillagerType villagertype => throw new NotImplementedException();
+
+    protected override void Init()
     {
         _resourceCollection = new ResourceCollection();
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-        _navMeshAgent.enabled = false;
+    }
 
-        _stateMachine = new StateMachine();
+    protected override StateMachine SetupVillagerStateMachine()
+    {
+        StateMachine stateMachine = new StateMachine();
 
         IState searchForResource = new SearchForResouces(this);
         IState moveToResource = new MoveToResouce(this, _navMeshAgent);
@@ -41,12 +42,12 @@ public class Gatherer : MonoBehaviour
         At(searchForStockPile, moveToStockpile, HasStockpile());
         At(moveToStockpile, searchForStockPile, StuckForStockPile());
         At(moveToStockpile, placeInStockPile, ReachedStockPile());
-        At(placeInStockPile, searchForStockPile, HasStockPileFilled());
         At(placeInStockPile, searchForResource, HasEmptiedCarryLoad());
+        At(placeInStockPile, searchForStockPile, HasStockPileFilled());
 
-        _stateMachine.SetState(searchForResource);
+        stateMachine.SetState(searchForResource);
 
-        void At(IState from, IState to, Func<bool> condition) => _stateMachine.AddTransition(from, to, condition);
+        void At(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, condition);
         Func<bool> HasTarget() => () => target != null;
         Func<bool> ReachedResource() => () => target != null && Vector3.Distance(transform.position, target.transform.position) < 1.8f;
         Func<bool> ResourceConsumed() => () => _resourceCollection.TotalResourceAmount() < _maxResourceCarryLimit  && target != null && ((IResource)target).IsDepleted();
@@ -57,6 +58,21 @@ public class Gatherer : MonoBehaviour
         Func<bool> ReachedStockPile() => () => stockPile != null && Vector3.Distance(transform.position, stockPile.transform.position) < 1.8f;
         Func<bool> HasStockPileFilled() => () => stockPile.IsFull();
         Func<bool> StuckForStockPile() => () => ((MoveToStockPile) moveToStockpile).stuckTime > 2f;
+
+        return stateMachine;
+    }
+
+    protected override NavMeshAgent GetNavMeshAgent()
+    {
+        NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.enabled = false;
+        return navMeshAgent;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if(_navMeshAgent != null)
+            Gizmos.DrawCube(_navMeshAgent.destination, Vector3.one * 0.5f);
     }
 
     private void Update() => _stateMachine.Tick();
@@ -83,9 +99,4 @@ public class Gatherer : MonoBehaviour
         } 
     }
 
-    private void OnDrawGizmos()
-    {
-        if(_navMeshAgent != null)
-            Gizmos.DrawCube(_navMeshAgent.destination, Vector3.one * 0.5f);
-    }
 }
