@@ -9,7 +9,8 @@ public class VillagerManager
     public int villagerCount => _villagers.Count;
 
 
-    public VillagerManager(IVillagerSpawner villagerSpawner) {
+    public VillagerManager(IVillagerSpawner villagerSpawner)
+    {
         _villagers = new List<IVillager>();
         _villagerSpawner = villagerSpawner;
         SetupListeners();
@@ -27,7 +28,7 @@ public class VillagerManager
         Debug.Log("Villager Spawned, count updated to : " + _villagers.Count);
     }
 
-    private void SpawGatherVillagers(ResourceType resourceType, int numberOfVillagers, Vector3 spawnPosition)
+    private void SpawnGatherVillagers(ResourceType resourceType, int numberOfVillagers, Vector3 spawnPosition)
     {
         for (int i = 0; i < numberOfVillagers; i++)
         {
