@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1928024fd2eb29b468e28a51cd3f8f86, type: 3}
+  m_Name: GoldStockpile
+  m_EditorClassIdentifier: 
+  name: Gold Stockpile
+  Prefab: {fileID: 2245658129189038090, guid: c027ff8bbfd3588469bcfe761e1ac00c, type: 3}
+  requiredWoodResources: 100
+  requiredStoneResources: 25
+  requiredGoldResources: 0
+  requiredGridSpaces: {x: 1, y: 1}
+  resourceType: 1
+  maxStorageCapacity: 50

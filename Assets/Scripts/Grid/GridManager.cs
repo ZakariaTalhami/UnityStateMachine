@@ -39,11 +39,16 @@ public class GridManager : MonoSingleton<GridManager>
         walkableGrid = new GridArea(walkableGridMeta.origin, walkableGridMeta.width, walkableGridMeta.height, gridCellSize);
         Color color = Color.blue;
         color.a = 0.1f;
+        color.a = 0.1f;
         walkableGrid.ShowDebuglines(color);
 
         villageGrid = CreateSubGrid(villageGridMeta);
         woodStockpileGrid = CreateSubGrid(woodStockpileGridMeta);
         stoneStockpileGrid = CreateSubGrid(stoneStockpileGridMeta);
+
+        Debug.Log("villageGrid :" + villageGrid.GetCell(0,0).worldPosition);
+        Debug.Log("woodStockpileGrid :" + woodStockpileGrid.GetCell(0,0).worldPosition);
+        Debug.Log("stoneStockpileGrid :" + stoneStockpileGrid.GetCell(0,0).worldPosition);
     }
 
     private SubGrid CreateSubGrid(GridMeta gridMeta)
@@ -51,7 +56,7 @@ public class GridManager : MonoSingleton<GridManager>
         Vector2Int startingCell = walkableGrid.GetCellofWorldPosition(gridMeta.origin).gridPosition;
         SubGrid subGrid = walkableGrid.GetSubGrid(startingCell, gridMeta.width, gridMeta.height);
         Color color = Color.red;
-        color.a = 0.1f;
+        color.a = 1f;
         subGrid.ShowDebuglines(color);
 
         return subGrid;

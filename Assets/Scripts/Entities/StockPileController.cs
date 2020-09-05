@@ -5,12 +5,18 @@ public class StockPileController : IStockpile
     private ResourceType _type;
     private ResourceCollection _storage;
     private int _totalStorageAmount => _storage.TotalResourceAmount();
+    private event GenericDelegates.FloatHandler _onCapacityUpdate;
 
     public StockPileController(ResourceType type, int storageLimit)
     {
         this._type = type;
         _storageLimit = storageLimit;
         _storage = new ResourceCollection(); ;
+    }
+
+    public void SetCapacityUpdateEvent(GenericDelegates.FloatHandler capacityEvent)
+    {
+        _onCapacityUpdate += capacityEvent;
     }
 
     public bool Store(ResourceCollection storeAmount, out ResourceCollection stored)
@@ -30,6 +36,7 @@ public class StockPileController : IStockpile
         }
         _storage += stored;
 
+        _onCapacityUpdate?.Invoke((float)_totalStorageAmount / _storageLimit);
         ResourceEventHandler.ResourceStoredInStockpile(stored);
 
         return true;
@@ -53,6 +60,7 @@ public class StockPileController : IStockpile
         }
         _storage += taken;
 
+        _onCapacityUpdate?.Invoke((float)_totalStorageAmount / _storageLimit);
         ResourceEventHandler.ResourceTakenFormStockpile(taken);
 
         return true;
@@ -67,4 +75,5 @@ public class StockPileController : IStockpile
     {
         return _storageLimit <= _totalStorageAmount;
     }
+
 }

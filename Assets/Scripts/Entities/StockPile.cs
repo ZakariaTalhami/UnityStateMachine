@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Stockpile : MonoBehaviour
+public class Stockpile : MonoBehaviour, IProgressEntity
 {
     [SerializeField] private int _storageLimit = 200;
     public ResourceType type = default;
@@ -9,9 +9,12 @@ public class Stockpile : MonoBehaviour
     private int _totalStorageAmount => _storage.TotalResourceAmount();
     private IStockpile _stockpileController;
 
+    public event GenericDelegates.FloatHandler onProgressUpdated;
+
     private void Start()
     {
         _stockpileController = new StockPileController(type, _storageLimit);
+        _stockpileController.SetCapacityUpdateEvent(onProgressUpdated);
         ResourceEventHandler.StockpileConstructed(this);
     }
 
