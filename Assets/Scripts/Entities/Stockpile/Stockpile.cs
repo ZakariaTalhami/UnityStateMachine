@@ -2,7 +2,16 @@ using UnityEngine;
 
 public class Stockpile : MonoBehaviour, IProgressEntity
 {
+    // TODO: Convert this to Prop when using the Factory
     [SerializeField] private int _storageLimit = 200;
+    public int storageLimit
+    {
+        get
+        {
+            return _storageLimit;
+        }
+    }
+
     public ResourceType type = default;
 
     private ResourceCollection _storage = new ResourceCollection();
@@ -32,4 +41,5 @@ public class Stockpile : MonoBehaviour, IProgressEntity
     {
         return _stockpileController.IsFull();
     }
+    
 }

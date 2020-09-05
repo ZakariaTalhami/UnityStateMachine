@@ -7,15 +7,18 @@ public class ResourceManager : MonoBehaviour
 
     private ResourceCollection _resources;
     private Dictionary<ResourceType, List<Stockpile>> _stockpiles;
+    private Dictionary<ResourceType, int> _resourceCapacity;
 
     private void Awake()
     {
         _resources = new ResourceCollection();
         _stockpiles = new Dictionary<ResourceType, List<Stockpile>>();
+        _resourceCapacity = new Dictionary<ResourceType, int>();
 
         foreach (ResourceType type in Enum.GetValues(typeof(ResourceType)))
         {
             _stockpiles[type] = new List<Stockpile>();
+            _resourceCapacity[type] = 0; 
         }
 
         SetupListeners();
@@ -71,5 +74,11 @@ public class ResourceManager : MonoBehaviour
     {
         Debug.Log("Stockpile added of type " + stockpile.type);
         _stockpiles[stockpile.type].Add(stockpile);
+        _resourceCapacity[stockpile.type] += stockpile.storageLimit;
+    }
+
+    public float GetResourceFullPercentage(ResourceType type)
+    {
+        return (float) _resources.GetResourceAmount(type) / _resourceCapacity[type];
     }
 }
