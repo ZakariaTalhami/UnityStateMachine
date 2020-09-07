@@ -128,7 +128,7 @@ public class SubGrid : IGrid
         {
             for (int y = 0; y < height; y++)
             {
-                parentGrid.SetCellContent(x, y, gameObject);
+                SetCellContent(x, y, gameObject);
             }
         }
     }

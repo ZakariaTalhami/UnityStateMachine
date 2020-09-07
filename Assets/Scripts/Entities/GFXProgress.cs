@@ -23,7 +23,6 @@ public class GFXProgress : MonoBehaviour
 
     private void ProgressUpdated(float progress)
     {
-        Debug.LogWarning("ProgressUpdated");
         int level = GetProgressLevel(progress);
         EnableGFXToLevel(level);
     }

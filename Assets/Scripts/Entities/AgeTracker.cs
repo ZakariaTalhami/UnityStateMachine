@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class AgeTracker : MonoBehaviour
+public class AgeTracker : MonoSingleton<AgeTracker>
 {
     public VillageAgeType currentAge { get; private set; }
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,4 +18,6 @@ public abstract class Villager : MonoBehaviour, IVillager
     protected abstract void Init();
     protected abstract StateMachine SetupVillagerStateMachine();
     protected abstract NavMeshAgent GetNavMeshAgent();
+
+    private void Update() => _stateMachine.Tick();
 }

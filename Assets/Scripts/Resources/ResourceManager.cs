@@ -36,7 +36,7 @@ public class ResourceManager : MonoBehaviour
         return requiredResources <= _resources;
     }
 
-    private bool TakeResources(ResourceCollection requiredResources)
+    public bool TakeResources(ResourceCollection requiredResources)
     {
         if (!IsResourceAvailable(requiredResources))
             return false;

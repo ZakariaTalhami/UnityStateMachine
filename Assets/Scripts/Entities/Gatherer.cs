@@ -75,8 +75,6 @@ public class Gatherer : Villager
             Gizmos.DrawCube(_navMeshAgent.destination, Vector3.one * 0.5f);
     }
 
-    private void Update() => _stateMachine.Tick();
-
     public void TakeFromTarget()
     {
         int possibleGatherAmount = (_totalCarryAmount + _gatherAmount < _maxResourceCarryLimit) ? _gatherAmount :  _maxResourceCarryLimit - _totalCarryAmount;

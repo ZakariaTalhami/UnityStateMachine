@@ -58,7 +58,7 @@ public class StockPileController : IStockpile
             takeAmountForType.TakeResource(_type, exceededAmount);
             taken = takeAmountForType;
         }
-        _storage += taken;
+        _storage -= taken;
 
         _onCapacityUpdate?.Invoke((float)_totalStorageAmount / _storageLimit);
         ResourceEventHandler.ResourceTakenFormStockpile(taken);

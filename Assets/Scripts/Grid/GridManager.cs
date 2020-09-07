@@ -62,19 +62,19 @@ public class GridManager : MonoSingleton<GridManager>
         return subGrid;
     }
 
-    public IGrid GetFreeVillagePosition(int width, int height, GameObject content)
+    public IGrid GetFreeVillagePosition(int width, int height)
     {
         IGrid grid = villageGrid.GetFreeArea(width, height);
         return grid;
     }
 
-    public IGrid GetFreeWoodStockpilePosition(int width, int height, GameObject content)
+    public IGrid GetFreeWoodStockpilePosition(int width, int height)
     {
         IGrid grid = woodStockpileGrid.GetFreeArea(width, height);
         return grid;
     }
 
-    public IGrid GetFreeStoneStockpilePosition(int width, int height, GameObject content)
+    public IGrid GetFreeStoneStockpilePosition(int width, int height)
     {
         IGrid grid = stoneStockpileGrid.GetFreeArea(width, height);
         return grid;

@@ -3,30 +3,30 @@ guid: f862610df47c55746a6ea181b8f2d9cb
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Foundation Joined
-    100002: Frame Joined
-    100004: Roof Joined
-    100006: Walls Joined
+    100000: 'Layer 1: Foundation Joined'
+    100002: 'Layer 2: Frame Joined'
+    100004: 'Layer 3: Walls Joined'
+    100006: 'Layer 4: Roof Joined'
     100008: //RootNode
-    400000: Foundation Joined
-    400002: Frame Joined
-    400004: Roof Joined
-    400006: Walls Joined
+    400000: 'Layer 1: Foundation Joined'
+    400002: 'Layer 2: Frame Joined'
+    400004: 'Layer 3: Walls Joined'
+    400006: 'Layer 4: Roof Joined'
     400008: //RootNode
     2100000: Roof
     2100002: Wall
-    2300000: Foundation Joined
-    2300002: Frame Joined
-    2300004: Roof Joined
-    2300006: Walls Joined
-    3300000: Foundation Joined
-    3300002: Frame Joined
-    3300004: Roof Joined
-    3300006: Walls Joined
-    4300000: Foundation Joined
-    4300002: Frame Joined
-    4300004: Walls Joined
-    4300006: Roof Joined
+    2300000: 'Layer 1: Foundation Joined'
+    2300002: 'Layer 2: Frame Joined'
+    2300004: 'Layer 3: Walls Joined'
+    2300006: 'Layer 4: Roof Joined'
+    3300000: 'Layer 1: Foundation Joined'
+    3300002: 'Layer 2: Frame Joined'
+    3300004: 'Layer 3: Walls Joined'
+    3300006: 'Layer 4: Roof Joined'
+    4300000: 'Layer 1: Foundation Joined'
+    4300002: 'Layer 2: Frame Joined'
+    4300004: 'Layer 3: Walls Joined'
+    4300006: 'Layer 4: Roof Joined'
   externalObjects: {}
   materials:
     importMaterials: 1
