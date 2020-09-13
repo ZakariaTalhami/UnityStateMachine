@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5014858309545544726}
   - component: {fileID: 5014858309545544725}
   m_Layer: 0
-  m_Name: Villager
+  m_Name: GathererVillager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,6 +72,7 @@ MonoBehaviour:
   _gatherAmount: 3
   _storeAmount: 5
   _maxResourceCarryLimit: 80
+  resourceTargetType: 0
 --- !u!1 &5014858310473091991
 GameObject:
   m_ObjectHideFlags: 0

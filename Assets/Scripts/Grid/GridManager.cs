@@ -67,6 +67,11 @@ public class GridManager : MonoSingleton<GridManager>
         IGrid grid = villageGrid.GetFreeArea(width, height);
         return grid;
     }
+    public IGrid GetRandomFreeVillagePosition(int width, int height)
+    {
+        IGrid grid = villageGrid.GetRandomFreeArea(width, height);
+        return grid;
+    }
 
     public IGrid GetFreeWoodStockpilePosition(int width, int height)
     {

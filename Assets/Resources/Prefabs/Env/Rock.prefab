@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789a0ebd1f328ed49bbfb4452091631c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _totalAvailable: 20
+  _totalAvailable: 80
 --- !u!208 &208623455267583776
 NavMeshObstacle:
   m_ObjectHideFlags: 0

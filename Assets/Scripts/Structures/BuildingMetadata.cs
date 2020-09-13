@@ -3,6 +3,8 @@ public class BuildingMetadata
 {
     public GameObject gameObject { get; private set; }
     public Structure structure { get; private set; }
+
+    // Is this Needed?
     public IGrid gird { get; private set; }
     public int xGridPosition { get; private set; }
     public int yGridPosition { get; private set; }

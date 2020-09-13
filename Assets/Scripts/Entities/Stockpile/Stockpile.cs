@@ -39,7 +39,7 @@ public class Stockpile : MonoBehaviour, IProgressEntity
 
     public bool IsFull()
     {
-        return _stockpileController.IsFull();
+        return _stockpileController == null || _stockpileController.IsFull();
     }
     
 }

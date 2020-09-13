@@ -14,7 +14,7 @@ public abstract class Structure :ScriptableObject
         ResourceCollection requirements = new ResourceCollection();
         requirements.AddToResource(ResourceType.Wood, requiredWoodResources);
         requirements.AddToResource(ResourceType.Stone, requiredStoneResources);
-        requirements.AddToResource(ResourceType. Gold, requiredGoldResources);
+        requirements.AddToResource(ResourceType.Gold, requiredGoldResources);
 
         return requirements;
     }

@@ -35,6 +35,7 @@ public class Gatherer : Villager
         IState placeInStockPile = new PlaceInStockPile(this);
 
         At(searchForResource, moveToResource, HasTarget());
+        At(searchForResource, searchForStockPile, CantFindResources());
         At(moveToResource, searchForResource, StuckForASecond());
         At(moveToResource, collectResource, ReachedResource());
         At(collectResource, searchForResource, ResourceConsumed());
@@ -49,6 +50,7 @@ public class Gatherer : Villager
 
         void At(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, condition);
         Func<bool> HasTarget() => () => target != null;
+        Func<bool> CantFindResources() => () => _resourceCollection.TotalResourceAmount() != 0 && ((SearchForResouces) searchForResource).searchDuration > 5f;
         Func<bool> ReachedResource() => () => target != null && Vector3.Distance(transform.position, target.transform.position) < 1.8f;
         Func<bool> ResourceConsumed() => () => _resourceCollection.TotalResourceAmount() < _maxResourceCarryLimit  && target != null && ((IResource)target).IsDepleted();
         Func<bool> StuckForASecond() => () => ((MoveToResouce) moveToResource).stuckTime > 2f;

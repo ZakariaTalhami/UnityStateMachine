@@ -6,6 +6,9 @@ public class Building : MonoBehaviour, IProgressEntity
     private int _work = 0;
     public event GenericDelegates.FloatHandler onProgressUpdated;
 
+    public Vector3 spawnPostion; 
+    public BuildingMetadata metadata { get; set; }
+
     public void AddWork(int workAmount)
     {
         if(!IsComplete())
@@ -13,6 +16,8 @@ public class Building : MonoBehaviour, IProgressEntity
             _work += workAmount;
             if (_work > _constructionGoal) _work = _constructionGoal;
             onProgressUpdated?.Invoke((float) _work / _constructionGoal);
+            if(IsComplete())
+                VillagerEventHandler.BuildingBuilt(metadata);
         }
     }
 
@@ -20,4 +25,7 @@ public class Building : MonoBehaviour, IProgressEntity
     {
         return _work >= _constructionGoal;
     }
+
+    public Vector3 getSpawnPosition() => transform.position + spawnPostion;
+    
 }

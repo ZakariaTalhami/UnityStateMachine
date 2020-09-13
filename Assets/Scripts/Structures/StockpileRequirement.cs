@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class StockpileRequirement : StructureRequirement
 {
     public StockpileRequirement(Structure structure, GridManager gridManager, ResourceManager resourceManager) : base(structure, gridManager, resourceManager)
@@ -11,7 +13,7 @@ public class StockpileRequirement : StructureRequirement
         structure.GetWidthAndHeight(out int  width, out int height);
         ResourceType requiredType = ((StockpileStructure) structure).resourceType;
         IGrid freeLocation;
-        if( requiredType == ResourceType.Gold || requiredType == ResourceType.Gold)
+        if( requiredType == ResourceType.Stone || requiredType == ResourceType.Gold)
             freeLocation = gridManager.GetFreeStoneStockpilePosition(width, height);
         else 
             freeLocation = gridManager.GetFreeWoodStockpilePosition(width, height);
@@ -26,5 +28,10 @@ public class StockpileRequirement : StructureRequirement
     public override bool IsApplicable()
     {
         return resourceManager.IsResourceAvailable(structure.GetResourceRequirements());
+    }
+
+    public override void PostInstantiationProcessing(BuildingMetadata structure)
+    {
+        
     }
 }

@@ -23,6 +23,8 @@ public abstract class StructureRequirement
 
     public abstract IGrid FindBuildLoaction();
 
+    public abstract void PostInstantiationProcessing(BuildingMetadata structure);
+
     public GameObject Build(IGrid structureGrid)
     {
         GameObject buildingPrefab = structure.Prefab;
@@ -30,6 +32,8 @@ public abstract class StructureRequirement
         resourceManager.TakeResources(structure.GetResourceRequirements());
         GameObject structureGO = GameObject.Instantiate(buildingPrefab, position, Quaternion.identity);
         structureGrid.SetGridContent(structureGO);
+        BuildingMetadata buildingMetadata = new BuildingMetadata(structureGO, structure, structureGrid, 0, 0);
+        PostInstantiationProcessing(buildingMetadata);
         return structureGO;
     }
 }

@@ -6,7 +6,9 @@ public class SearchForResouces : IState
 {
     private readonly Gatherer _gatherer;
     private readonly Type  _targetType;
-
+    private readonly float _timeoutDuration;
+    public float searchDuration;
+    
     public SearchForResouces(Gatherer gatherer)
     {
         _gatherer = gatherer;
@@ -15,6 +17,7 @@ public class SearchForResouces : IState
     public void Tick()
     {
         _gatherer.target = SelectOneOfClosestResources(5);
+        searchDuration += Time.deltaTime;
     }
 
     public Resource SelectOneOfClosestResources(int randomPoolSize)
@@ -29,7 +32,7 @@ public class SearchForResouces : IState
         return r;
     }
 
-    public void OnEnter() {}
+    public void OnEnter() { searchDuration = 0;}
 
     public void OnExit() {}
 }

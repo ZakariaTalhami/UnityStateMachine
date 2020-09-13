@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095f30060beddde4c81ecc3909a56072, type: 3}
+  m_Name: WoodenStoneCabin
+  m_EditorClassIdentifier: 
+  name: Wooden Stone Cabin
+  Prefab: {fileID: 2106889065300153005, guid: d75bf286a8f4a2b49899d0ef40d299e6, type: 3}
+  requiredWoodResources: 120
+  requiredStoneResources: 100
+  requiredGoldResources: 0
+  requiredGridSpaces: {x: 4, y: 6}
+  ageType: 1
+  spawnVilagerTypes: 0000000002000000
