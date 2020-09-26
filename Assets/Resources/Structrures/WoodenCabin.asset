@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Wooden Cabin
   Prefab: {fileID: 9123412146244259629, guid: f1ddc83a925aedb4b851f43e67209446, type: 3}
-  requiredWoodResources: 50
+  requiredWoodResources: 150
   requiredStoneResources: 0
   requiredGoldResources: 0
   requiredGridSpaces: {x: 4, y: 4}

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _storageLimit: 200
-  type: 2
+  type: 1
 --- !u!114 &114599467737823986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _constructionGoal: 0
+  spawnPostion: {x: 0, y: 0, z: 0}
 --- !u!114 &4106309856027000640
 MonoBehaviour:
   m_ObjectHideFlags: 0

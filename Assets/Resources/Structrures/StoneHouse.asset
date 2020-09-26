@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Stone House
   Prefab: {fileID: 7521605961249901921, guid: c461591c8c7bfbc41b0968769c3cf27d, type: 3}
-  requiredWoodResources: 120
+  requiredWoodResources: 400
   requiredStoneResources: 200
-  requiredGoldResources: 0
+  requiredGoldResources: 50
   requiredGridSpaces: {x: 6, y: 6}
   ageType: 2
-  spawnVilagerTypes: 000000000200000001000000
+  spawnVilagerTypes: 0100000002000000

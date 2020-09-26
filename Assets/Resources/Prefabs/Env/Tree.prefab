@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _totalAvailable: 80
+  _regenerationTime: 300
 --- !u!208 &208346194664583438
 NavMeshObstacle:
   m_ObjectHideFlags: 0
